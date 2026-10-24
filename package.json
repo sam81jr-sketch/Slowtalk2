@@ -1,0 +1,13 @@
+{
+  "name": "slowtalk2",
+  "version": "2.0.0",
+  "description": "Private two-person text, audio and video rooms",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "socket.io": "^4.8.1"
+  }
+}

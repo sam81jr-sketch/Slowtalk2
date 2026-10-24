@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0B1020">
+<title>SlowTalk — Private conversations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="/" aria-label="SlowTalk home"><span class="logo">S</span><span>SlowTalk<small>Private conversations. Simply connected.</small></span></a><div class="secure-pill"><span class="dot"></span><span id="securityLabel">Secure connection</span></div></header>
+<main id="home" class="home-view">
+  <section class="hero"><h1>A space for just the two of you.</h1><p class="features"><span>▢ Text</span><span>♩ Audio</span><span>▣ Video</span></p></section>
+  <section class="home-cards">
+    <article class="card create-card"><div class="card-top"><span class="icon-box blue">＋</span><span class="limit">♙ Just 2 people</span></div><h2>Start a private conversation</h2><p>Create a private room for you and one other person.</p><label for="createName">Display name <span>(optional)</span></label><input id="createName" maxlength="24" placeholder="Your name" autocomplete="nickname"><button id="createBtn" class="btn primary">♙ &nbsp;Create Private Room</button><div class="card-note">♙ &nbsp;Private room · Maximum 2 people</div>
+    </article>
+    <article class="card join-card"><div class="card-top"><span class="icon-box teal">↪</span><span class="limit">♙ Just 2 people</span></div><h2>Join a conversation</h2><p>Have an invitation? Join your private room.</p><label for="inviteInput">Invitation link or room code</label><input id="inviteInput" placeholder="Paste invitation link or room code" autocomplete="off"><button id="joinBtn" class="btn join-btn">Join Room <span>→</span></button><div class="card-note">↗ &nbsp;Your invitation is your way in.</div>
+    </article>
+  </section>
+  <p class="under-note">Create a room. Share the invitation. Take your time.</p>
+</main>
+<main id="room" class="room-view hidden">
+  <div class="room-header"><div><div class="room-title">Private conversation <span class="private-tag">PRIVATE</span></div><div class="room-sub" id="roomCodeLabel">Invitation-only room</div></div><div class="room-actions"><span class="people-count" id="peopleCount">1/2 people</span><button id="copyInvite" class="btn small-btn">Copy invite</button><button id="leaveBtn" class="btn leave-btn">Leave</button></div></div>
+  <nav class="tabs"><button class="tab active" data-tab="text">▢ Text</button><button class="tab" data-tab="audio">♩ Audio Call</button><button class="tab" data-tab="video">▣ Video Call</button></nav>
+  <section id="textPanel" class="chat-panel"><div id="messages" class="messages"><div class="empty-chat"><div class="empty-icon">✦</div><h2>Your private space</h2><p>Send a message to start the conversation.</p></div></div><form id="messageForm" class="composer"><input id="messageInput" maxlength="2000" placeholder="Write a message…" autocomplete="off"><button class="send-btn" aria-label="Send message">↑</button></form></section>
+  <section id="callPanel" class="call-panel hidden"><div class="call-stage"><div id="remotePlaceholder" class="remote-placeholder"><div class="avatar">S</div><h2 id="remoteName">Waiting for the other person</h2><p id="callStatus">Your call will begin when you connect.</p></div><video id="remoteVideo" autoplay playsinline></video><video id="localVideo" autoplay playsinline muted></video><div id="callConnection" class="connection-badge">Ready to connect</div></div><div class="call-controls"><button id="muteBtn" class="control-btn">🎙 <span>Mute mic</span></button><button id="cameraBtn" class="control-btn">▣ <span>Camera off</span></button><button id="endCallBtn" class="control-btn end-call">☎ <span>End call</span></button></div><p class="call-help">For the best experience, use a stable connection. Video quality may be reduced on slow networks.</p></section>
+</main>
+<div id="toast" class="toast" role="status"></div>
+<script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body></html>
