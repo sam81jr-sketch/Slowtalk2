@@ -6,7 +6,15 @@ const { Server } = require('socket.io');
 const crypto = require('crypto');
 
 const app = express();
-app.use(express.static(path.join(__dirname, 'public')));
+app.get('/', (_req, res) =>
+  res.sendFile(path.join(__dirname, 'index.html'))
+);
+app.get('/style.css', (_req, res) =>
+  res.sendFile(path.join(__dirname, 'style.css'))
+);
+app.get('/app.js', (_req, res) =>
+  res.sendFile(path.join(__dirname, 'app.js'))
+);
 app.get('/health', (_req, res) => res.json({ ok: true, app: 'SlowTalk' }));
 
 const server = http.createServer(app);
